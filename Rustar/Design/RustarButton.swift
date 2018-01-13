@@ -4,6 +4,9 @@ import UIKit
 @IBDesignable
 class RustarButton: UIButton {
     
+    @IBInspectable
+    var roundedCorners: Bool = false
+    
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         changeStyle()
@@ -12,7 +15,9 @@ class RustarButton: UIButton {
     func changeStyle() {
         self.backgroundColor = Colors.rustarGreen
         self.setTitleColor(UIColor.white, for: .normal)
-        self.layer.cornerRadius = self.frame.height / 2
+        if roundedCorners {
+            self.layer.cornerRadius = self.frame.height / 2
+        }
         self.setTitle("\(self.titleLabel!.text!)", for: .normal) 
     }
     

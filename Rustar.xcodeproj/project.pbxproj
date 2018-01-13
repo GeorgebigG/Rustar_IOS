@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4506EE6C2001D6FB007D45D5 /* FirstPageJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506EE6B2001D6FB007D45D5 /* FirstPageJSONData.swift */; };
+		45355DBB1FF48DE6004413C0 /* AccountChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45355DBA1FF48DE6004413C0 /* AccountChecker.swift */; };
+		45355DBE1FF49FCF004413C0 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45355DBD1FF49FCF004413C0 /* HomePage.swift */; };
+		45B482D91FF55D2D00333AED /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B482D81FF55D2D00333AED /* LocationController.swift */; };
 		45D452721FF0458700698F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D452711FF0458700698F16 /* AppDelegate.swift */; };
 		45D452741FF0458700698F16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D452731FF0458700698F16 /* ViewController.swift */; };
 		45D452771FF0458700698F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D452751FF0458700698F16 /* Main.storyboard */; };
@@ -14,6 +18,7 @@
 		45D4527C1FF0458700698F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D4527A1FF0458700698F16 /* LaunchScreen.storyboard */; };
 		45D452871FF0458700698F16 /* RustarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D452861FF0458700698F16 /* RustarTests.swift */; };
 		45D452921FF0458700698F16 /* RustarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D452911FF0458700698F16 /* RustarUITests.swift */; };
+		45D4AB2D1FF6335E0058707B /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D4AB2C1FF6335E0058707B /* DatePickerController.swift */; };
 		45F1431C1FF0471B00ACBE8B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1431B1FF0471B00ACBE8B /* Colors.swift */; };
 		45F1431E1FF04A2000ACBE8B /* RustarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1431D1FF04A2000ACBE8B /* RustarButton.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4506EE6B2001D6FB007D45D5 /* FirstPageJSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageJSONData.swift; sourceTree = "<group>"; };
+		45355DBA1FF48DE6004413C0 /* AccountChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountChecker.swift; sourceTree = "<group>"; };
+		45355DBD1FF49FCF004413C0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		45B482D81FF55D2D00333AED /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		45D4526E1FF0458700698F16 /* Rustar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rustar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D452711FF0458700698F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45D452731FF0458700698F16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		45D4528D1FF0458700698F16 /* RustarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RustarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D452911FF0458700698F16 /* RustarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RustarUITests.swift; sourceTree = "<group>"; };
 		45D452931FF0458700698F16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D4AB2C1FF6335E0058707B /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		45F1431B1FF0471B00ACBE8B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		45F1431D1FF04A2000ACBE8B /* RustarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RustarButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +88,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45355DB81FF48D91004413C0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				45D4AB2B1FF633040058707B /* DatePicker */,
+				45B482D71FF55CF400333AED /* LocationPicker */,
+				45355DBC1FF49FA9004413C0 /* Home */,
+				45355DB91FF48DA5004413C0 /* Log in */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		45355DB91FF48DA5004413C0 /* Log in */ = {
+			isa = PBXGroup;
+			children = (
+				45D452731FF0458700698F16 /* ViewController.swift */,
+				45355DBA1FF48DE6004413C0 /* AccountChecker.swift */,
+			);
+			path = "Log in";
+			sourceTree = "<group>";
+		};
+		45355DBC1FF49FA9004413C0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				45355DBD1FF49FCF004413C0 /* HomePage.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		45B482D71FF55CF400333AED /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				45B482D81FF55D2D00333AED /* LocationController.swift */,
+				4506EE6B2001D6FB007D45D5 /* FirstPageJSONData.swift */,
+			);
+			path = LocationPicker;
+			sourceTree = "<group>";
+		};
 		45D452651FF0458700698F16 = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +148,9 @@
 		45D452701FF0458700698F16 /* Rustar */ = {
 			isa = PBXGroup;
 			children = (
+				45355DB81FF48D91004413C0 /* Controllers */,
 				45F1431A1FF0470E00ACBE8B /* Design */,
 				45D452711FF0458700698F16 /* AppDelegate.swift */,
-				45D452731FF0458700698F16 /* ViewController.swift */,
 				45D452751FF0458700698F16 /* Main.storyboard */,
 				45D452781FF0458700698F16 /* Assets.xcassets */,
 				45D4527A1FF0458700698F16 /* LaunchScreen.storyboard */,
@@ -128,6 +175,14 @@
 				45D452931FF0458700698F16 /* Info.plist */,
 			);
 			path = RustarUITests;
+			sourceTree = "<group>";
+		};
+		45D4AB2B1FF633040058707B /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				45D4AB2C1FF6335E0058707B /* DatePickerController.swift */,
+			);
+			path = DatePicker;
 			sourceTree = "<group>";
 		};
 		45F1431A1FF0470E00ACBE8B /* Design */ = {
@@ -274,9 +329,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D452741FF0458700698F16 /* ViewController.swift in Sources */,
+				45355DBE1FF49FCF004413C0 /* HomePage.swift in Sources */,
 				45F1431C1FF0471B00ACBE8B /* Colors.swift in Sources */,
 				45F1431E1FF04A2000ACBE8B /* RustarButton.swift in Sources */,
 				45D452721FF0458700698F16 /* AppDelegate.swift in Sources */,
+				45D4AB2D1FF6335E0058707B /* DatePickerController.swift in Sources */,
+				45355DBB1FF48DE6004413C0 /* AccountChecker.swift in Sources */,
+				45B482D91FF55D2D00333AED /* LocationController.swift in Sources */,
+				4506EE6C2001D6FB007D45D5 /* FirstPageJSONData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
