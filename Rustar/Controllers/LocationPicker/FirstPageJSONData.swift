@@ -4,8 +4,8 @@ import UIKit
 struct FirstPageJSONData : Decodable {
     
     let city : String
-    let price: Int
-    let old_price: Int
+    let price: Decimal
+    let old_price: Decimal
     let url : String
     let rank : Double
 }

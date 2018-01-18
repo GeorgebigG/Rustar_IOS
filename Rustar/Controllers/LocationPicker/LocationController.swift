@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 class LocationController: UIViewController {
     
@@ -10,33 +11,53 @@ class LocationController: UIViewController {
     
     var jsonIsDone = false, viewDidLayoutSubviewsAlready = false
     
+    var locations = [Location]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let jsonUrlLink = "https://script.googleusercontent.com/macros/echo?user_content_key=wM3n5XpINfTWF0qjQLN__bPTANVymebQ6Wphc36h-67bTlzht7qkbcSQqr1nRTnZEssvlsOk8KXmrlxd760YStC--FPCY_M9OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpyr_lAc9V4NXdV3kMcIDX22Jnodg7Qef_ld4DFc4yMLCJlAEelXzvDauUxDB_P7jPMKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx"
-        
-        guard let url = URL(string: jsonUrlLink) else { return }
-        
-        URLSession.shared.dataTask(with: url) {
-            (data, response, err) in
+        do {
+            let fetchFromData: NSFetchRequest<Location> = Location.fetchRequest()
+            locations = try AppDelegate.persistentContainer.viewContext.fetch(fetchFromData)
             
-            guard let data = data else { return }
-            
-            do {
-                let json = try JSONDecoder().decode(FirstPageJSONDataFrame.self, from: data)
-                self.countryList = json.Sheet1
-                
-                self.jsonIsDone = true
-                if self.viewDidLayoutSubviewsAlready {
-                    DispatchQueue.main.async {
-                        self.createCountryList()
-                    }
+            if locations.count > 0 {
+                for i in locations {
+                    print("\(i.hotelName!), \(i.price!), \(i.oldPrice!), \(i.rank!)")
                 }
-                
-            } catch let jsonErr {
-                print("json error:", jsonErr)
+            } else {
+                print("Empty")
             }
-        }.resume()
+            
+            
+        } catch let error {
+            print(error)
+        }
+        
+        
+//        let jsonUrlLink = "https://script.googleusercontent.com/macros/echo?user_content_key=wM3n5XpINfTWF0qjQLN__bPTANVymebQ6Wphc36h-67bTlzht7qkbcSQqr1nRTnZEssvlsOk8KXmrlxd760YStC--FPCY_M9OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpyr_lAc9V4NXdV3kMcIDX22Jnodg7Qef_ld4DFc4yMLCJlAEelXzvDauUxDB_P7jPMKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx"
+//
+//        guard let url = URL(string: jsonUrlLink) else { return }
+//
+//        URLSession.shared.dataTask(with: url) {
+//            (data, response, err) in
+//
+//            guard let data = data else { return }
+//
+//            do {
+//                let json = try JSONDecoder().decode(FirstPageJSONDataFrame.self, from: data)
+//                self.countryList = json.Sheet1
+//
+//                self.jsonIsDone = true
+//                if self.viewDidLayoutSubviewsAlready {
+//                    DispatchQueue.main.async {
+//                        self.createCountryList()
+//                    }
+//                }
+//
+//            } catch let jsonErr {
+//                print("json error:", jsonErr)
+//            }
+//         }.resume()
     }
     
     func createCountryList() {
@@ -103,13 +124,30 @@ class LocationController: UIViewController {
                 
                 let percentage = RustarButton(frame: CGRect(x: x, y: y, width: width, height: height))
                 percentage.roundedCorners = true
-                percentage.setTitle("-\(Int(Double(i.old_price - i.price) / Double(i.old_price) * 100))%", for: .normal)
+                // i.old_price - i.price / i.old_price * 100
+                let pricePercentage = NSDecimalNumber(decimal: i.old_price - i.price / i.old_price * 100)
+                if pricePercentage as Decimal >= Decimal(0){
+                    percentage.setTitle("-\(Int(pricePercentage))%", for: .normal)
+                } else {
+                    percentage.setTitle("\(Int(pricePercentage))%", for: .normal)
+                }
+                
                 
                 imageView.layer.insertSublayer(percentage.layer, above: imageView.layer)
                 
                 locationViews.addArrangedSubview(imageView)
                 locationViews.addArrangedSubview(info)
                 mainStackView.addArrangedSubview(locationViews)
+                
+                // Save data
+                let location = Location(context: AppDelegate.persistentContainer.viewContext)
+                location.hotelName = i.city.uppercased()
+                let imageData: NSData = UIImagePNGRepresentation(image)! as NSData
+                location.image = imageData
+                location.price = NSDecimalNumber(decimal: i.price)
+                location.oldPrice = NSDecimalNumber(decimal: i.old_price)
+                location.rank = NSDecimalNumber(value: i.rank)
+                AppDelegate.saveContext()
                 
             } catch let jsonErr {
                 print(jsonErr)
