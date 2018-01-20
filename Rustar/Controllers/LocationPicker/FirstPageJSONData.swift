@@ -7,7 +7,7 @@ struct FirstPageJSONData : Decodable {
     let price: Decimal
     let old_price: Decimal
     let url : String
-    let rank : Double
+    let rank : Decimal
 }
 
 struct FirstPageJSONDataFrame : Decodable {

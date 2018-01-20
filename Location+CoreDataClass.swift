@@ -2,7 +2,7 @@
 //  Location+CoreDataClass.swift
 //  Rustar
 //
-//  Created by George Nebieridze on 1/16/18.
+//  Created by George Nebieridze on 1/17/18.
 //  Copyright © 2018 Rustar. All rights reserved.
 //
 //
