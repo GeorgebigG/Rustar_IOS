@@ -214,6 +214,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="2SB-OT-H7n" firstAttribute="trailing" secondItem="5fo-4L-g8g" secondAttribute="trailing" constant="15" id="6h9-eR-Op5"/>
                             <constraint firstItem="5fo-4L-g8g" firstAttribute="top" secondItem="2SB-OT-H7n" secondAttribute="top" id="jVv-ub-L8p"/>
@@ -221,6 +222,9 @@
                             <constraint firstItem="5fo-4L-g8g" firstAttribute="bottom" secondItem="2SB-OT-H7n" secondAttribute="bottom" id="xia-if-QiK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2SB-OT-H7n"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5FH-4p-39F" appends="YES" id="p18-l1-uSW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="MBz-rB-cqP"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -229,6 +233,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjI-7N-FGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5FH-4p-39F">
+                    <connections>
+                        <action selector="touched:" destination="wcL-4L-spz" id="0hn-WB-04Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-713.04347826086962" y="32.608695652173914"/>
         </scene>

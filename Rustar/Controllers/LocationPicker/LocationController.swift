@@ -25,6 +25,10 @@ class LocationController: UIViewController {
             return
         }
         
+        /////////////////////////////////////////
+        
+        // Before downloading new data let's show the user previous one that is already save in our core data
+        // In this way user will not have to wait for a downloading proccess every time he runs the program.
         do {
             
             let fetchFromData: NSFetchRequest<Location> = Location.fetchRequest()
@@ -39,6 +43,8 @@ class LocationController: UIViewController {
         } else {
             print("Empty")
         }
+        
+        /////////////////////////////////////////
         
         let jsonUrlLink = "https://script.googleusercontent.com/macros/echo?user_content_key=wM3n5XpINfTWF0qjQLN__bPTANVymebQ6Wphc36h-67bTlzht7qkbcSQqr1nRTnZEssvlsOk8KXmrlxd760YStC--FPCY_M9OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpyr_lAc9V4NXdV3kMcIDX22Jnodg7Qef_ld4DFc4yMLCJlAEelXzvDauUxDB_P7jPMKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx"
         
@@ -93,6 +99,7 @@ class LocationController: UIViewController {
         }
         
         for place in listOfPlaces {
+            
             // creating a stack view to separate all countries by stacks
             let locationViews = UIStackView()
             locationViews.axis = .vertical
@@ -160,6 +167,17 @@ class LocationController: UIViewController {
             mainStackView.addArrangedSubview(locationViews)
         }
     }
+    
+    @IBAction func touched(_ sender: UITapGestureRecognizer) {
+        let touchPoint = sender.location(in: mainStackView)
+        
+        for i in mainStackView.subviews {
+            if i.frame.minY <= touchPoint.y && touchPoint.y <= i.frame.maxY {
+                print((i.subviews[0] as! UILabel).text!)
+            }
+        }
+    }
+    
 }
 
 
