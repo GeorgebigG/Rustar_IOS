@@ -11,6 +11,7 @@
 		45355DBB1FF48DE6004413C0 /* AccountChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45355DBA1FF48DE6004413C0 /* AccountChecker.swift */; };
 		45355DBE1FF49FCF004413C0 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45355DBD1FF49FCF004413C0 /* HomePage.swift */; };
 		453F19A1200AB72700CD8FEA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 453F199F200AB72700CD8FEA /* Model.xcdatamodeld */; };
+		456C1503201D63A70093A2B5 /* LocationPickerBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C1502201D63A70093A2B5 /* LocationPickerBrain.swift */; };
 		457F742E20104C3600B62AE1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F742C20104C3600B62AE1 /* Location+CoreDataClass.swift */; };
 		457F742F20104C3600B62AE1 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F742D20104C3600B62AE1 /* Location+CoreDataProperties.swift */; };
 		45B482D91FF55D2D00333AED /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B482D81FF55D2D00333AED /* LocationController.swift */; };
@@ -48,6 +49,7 @@
 		45355DBA1FF48DE6004413C0 /* AccountChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountChecker.swift; sourceTree = "<group>"; };
 		45355DBD1FF49FCF004413C0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		453F19A0200AB72700CD8FEA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		456C1502201D63A70093A2B5 /* LocationPickerBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerBrain.swift; sourceTree = "<group>"; };
 		457F742C20104C3600B62AE1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "../../Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		457F742D20104C3600B62AE1 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		45B482D81FF55D2D00333AED /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				45B482D81FF55D2D00333AED /* LocationController.swift */,
 				4506EE6B2001D6FB007D45D5 /* FirstPageJSONData.swift */,
+				456C1502201D63A70093A2B5 /* LocationPickerBrain.swift */,
 			);
 			path = LocationPicker;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				45355DBE1FF49FCF004413C0 /* HomePage.swift in Sources */,
 				45F1431C1FF0471B00ACBE8B /* Colors.swift in Sources */,
 				45F1431E1FF04A2000ACBE8B /* RustarButton.swift in Sources */,
+				456C1503201D63A70093A2B5 /* LocationPickerBrain.swift in Sources */,
 				45D452721FF0458700698F16 /* AppDelegate.swift in Sources */,
 				45D4AB2D1FF6335E0058707B /* DatePickerController.swift in Sources */,
 				45355DBB1FF48DE6004413C0 /* AccountChecker.swift in Sources */,

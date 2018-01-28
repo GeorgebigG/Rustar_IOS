@@ -8,89 +8,26 @@ class LocationController: UIViewController {
     
     let margin = 15
     
-    var locations = [Location]()
-    var downloadedLocations = [Location]()
-    
-    var downloaded: Bool = false
+    var brain: LocationPickerBrain!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloaded = false
+        brain = LocationPickerBrain(callBack: createCountryList)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if downloaded {
+        if brain.downloaded {
             return
         }
         
-        /////////////////////////////////////////
-        
-        // Before downloading new data let's show the user previous one that is already save in our core data
-        // In this way user will not have to wait for a downloading proccess every time he runs the program.
-        do {
-            
-            let fetchFromData: NSFetchRequest<Location> = Location.fetchRequest()
-            locations = try AppDelegate.persistentContainer.viewContext.fetch(fetchFromData)
-            
-        } catch let error {
-            print(error)
-        }
-        
-        if locations.count > 0 {
-            createCountryList(locations)
-        } else {
-            print("Empty")
-        }
-        
-        /////////////////////////////////////////
-        
-        let jsonUrlLink = "https://script.googleusercontent.com/macros/echo?user_content_key=wM3n5XpINfTWF0qjQLN__bPTANVymebQ6Wphc36h-67bTlzht7qkbcSQqr1nRTnZEssvlsOk8KXmrlxd760YStC--FPCY_M9OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpyr_lAc9V4NXdV3kMcIDX22Jnodg7Qef_ld4DFc4yMLCJlAEelXzvDauUxDB_P7jPMKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx"
-        
-        guard let url = URL(string: jsonUrlLink) else { return }
-        
-        URLSession.shared.dataTask(with: url) {
-            (data, response, err) in
-            
-            guard let data = data else { return }
-            
-            do {
-                let json = try JSONDecoder().decode(FirstPageJSONDataFrame.self, from: data)
-                let countryList = json.Sheet1
-                
-                // Create a New Data
-                for i in countryList {
-                    let location = Location(context: AppDelegate.persistentContainer.viewContext)
-                    
-                    location.city = i.city
-                    location.image = NSData(contentsOf: NSURL(string: i.url)! as URL)
-                    location.oldPrice = NSDecimalNumber(decimal: i.old_price)
-                    location.price = NSDecimalNumber(decimal: i.price)
-                    location.rank = NSDecimalNumber(decimal: i.rank)
-                    
-                    self.downloadedLocations.append(location)
-                }
-                
-                self.downloaded = true
-                
-                DispatchQueue.main.async {
-                    
-                    // Delete the old Data
-                    for oldLocation in self.locations {
-                        AppDelegate.persistentContainer.viewContext.delete(oldLocation)
-                    }
-                    
-                    self.createCountryList(self.downloadedLocations)
-                    
-                    AppDelegate.saveContext()
-                }
-                
-            } catch let jsonErr {
-                print(jsonErr)
-            }
-            }.resume()
+        // Before downloading new data let's show the user previous one that is already saved in our core data In this way user will no longer have to wait for a downloading proccess every time he starts the program.
+        brain.fetchData()
+        brain.downloadData()
     }
+    
+    
     
     func createCountryList(_ listOfPlaces: [Location]) {
         
